@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "/Users/soyster/Desktop/fdf"
+		},
+		{
+			"path": "/Users/soyster/Desktop/fdf_1"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdio.h": "c"
+		}
+	}
+}
