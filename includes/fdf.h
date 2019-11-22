@@ -6,7 +6,7 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:06:04 by soyster           #+#    #+#             */
-/*   Updated: 2019/11/20 23:14:28 by soyster          ###   ########.fr       */
+/*   Updated: 2019/11/22 21:10:43 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ typedef struct		s_map
 	struct s_pos	pos;
 }					t_map;
 
-int ft_height(int fd);
-int ft_error(void);
-int main(int argc, char **argv);
-
-
+int			ft_height(int fd);
+int			ft_error(void);
+int			main(int argc, char **argv);
+static int	ft_free(char *line, char **arr_str, int f1, int f2);
+static int	cycle_read(int fd, char *line, char **arr_str, t_map *map);
+static int	first_read(int fd, char *line, char **arr_str, t_map *map);
+t_map		*ft_validation(int fd, int height);
 
 #endif
