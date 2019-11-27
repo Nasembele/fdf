@@ -6,7 +6,7 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:06:04 by soyster           #+#    #+#             */
-/*   Updated: 2019/11/20 23:25:53 by soyster          ###   ########.fr       */
+/*   Updated: 2019/11/27 17:12:01 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main(int argc, char **argv)
         fd = open(argv[1], O_RDONLY);
         if (!(map = ft_validation(fd, height)))
   	    	return (ft_error());
-//        ft_create_window(map);
-//        close(fd);
+        create_window(map);
+        close(fd);
     }
     else
         write(1, "usage: ./fdf target_filename\n", 29);

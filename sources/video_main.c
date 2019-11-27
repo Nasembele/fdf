@@ -7,18 +7,6 @@
 #define WIDTH 1000
 #define HEIGHT 1000
 
-void    ft_putchar(char c)
-{
-    write(1, &c, 1);
-}
-
-void    ft_putstr(char *str)
-{
-    int i = -1;
-    while (str[++i])
-        ft_putchar(str[i]);
-}
-
 void    ft_exit(char *msg)
 {
     ft_putstr(msg);

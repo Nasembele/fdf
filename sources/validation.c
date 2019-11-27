@@ -6,13 +6,13 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:06:04 by soyster           #+#    #+#             */
-/*   Updated: 2019/11/22 21:07:19 by soyster          ###   ########.fr       */
+/*   Updated: 2019/11/27 16:28:13 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int			ft_free(char *line, char **arr_str, int f1, int f2)
+static int			free_ft(char *line, char **arr_str, int f1, int f2)
 {
 	if ((f1 == 0 || f1 == 2) && line != NULL)
 		ft_strdel(&line);
@@ -32,15 +32,15 @@ static int			cycle_read(int fd, char *line, char **arr_str, t_map *map)
 	{
 		k = -1;
 		if (!(arr_str = ft_strsplit(line, ' ')) && (delete_map(&map, i - 1)))
-			return (ft_free(line, NULL, 0, 1));
+			return (free_ft(line, NULL, 0, 1));
 		if (map->width != ft_len_arr(arr_str) && (delete_map(&map, i - 1)))
-			return (ft_free(line, arr_str, 2, 1));
+			return (free_ft(line, arr_str, 2, 1));
 		if (!(map->arr[i] = (int *)ft_memalloc(sizeof(int) * map->width)) \
 			&& (delete_map(&map, i - 1)))
-			return (ft_free(line, arr_str, 2, 1));
+			return (free_ft(line, arr_str, 2, 1));
 		while (++k != map->width)
 			map->arr[i][k] = ft_getnbr(arr_str[k]);
-		ft_free(line, arr_str, 2, 0);
+		free_ft(line, arr_str, 2, 0);
 		i++;
 	}
 	return (res == -1 ? -1 : 0);
@@ -54,13 +54,13 @@ static int			first_read(int fd, char *line, char **arr_str, t_map *map)
 	if (!get_next_line(fd, &line))
 		return (-1);
 	if (!(arr_str = ft_strsplit(line, ' ')))
-		return (ft_free(line, NULL, 0, -1));
+		return (free_ft(line, NULL, 0, -1));
 	map->width = ft_len_arr(arr_str);
 	if (!(map->arr[0] = (int *)ft_memalloc(sizeof(int) * map->width)))
-		return (ft_free(line, arr_str, 2, -1));
+		return (free_ft(line, arr_str, 2, -1));
 	while (++k != map->width)
 		map->arr[0][k] = ft_getnbr(arr_str[k]);
-	ft_free(line, arr_str, 2, 0);
+	free_ft(line, arr_str, 2, 0);
 	return (0);
 }
 
