@@ -6,7 +6,7 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:06:04 by soyster           #+#    #+#             */
-/*   Updated: 2019/11/20 22:17:21 by soyster          ###   ########.fr       */
+/*   Updated: 2019/11/27 17:46:52 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,9 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					get_next_line(const int fd, char **line);
+void				ft_destroy_int_arr(int **arr, int i);
+void				ft_destroy_string_arr(char **arr);
+int					ft_getnbr(char *str);
+int					ft_len_arr(char **arr);
 
 #endif
