@@ -6,17 +6,17 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:06:04 by soyster           #+#    #+#             */
-/*   Updated: 2019/11/27 17:24:52 by soyster          ###   ########.fr       */
+/*   Updated: 2019/11/28 17:52:55 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "mlx.h"
+# include "mlx.h"
 
 # include <math.h>
-#include <fcntl.h>
+# include <fcntl.h>
 # include "./libft.h"
 # include "../resourses/minilibx/mlx.h"
 
@@ -27,11 +27,7 @@
 # define MINUS		78
 # define CHANGE		67
 
-# define RED 		16711680
-# define GREEN 		65280
 # define BLUE		720895
-# define WHITE		16777215
-# define PINK		16737970
 # define PURPLE 	9055202
 
 # define RIGHT 		2
@@ -86,20 +82,19 @@ typedef struct		s_map
 	int				height;
 	int				width;
 	int				color;
-	int				sidebar_flag;
 	int				gradient_flag;
 	struct s_mlx	mlx;
 	struct s_line	line;
 	struct s_pos	pos;
 }					t_map;
 
-
-t_map		*ft_validation(int fd, int height);
-int			ft_height(int fd);
-int			ft_error(void);
-static int	free_ft(char *line, char **arr_str, int f1, int f2);
-static int	cycle_read(int fd, char *line, char **arr_str, t_map *map);
-static int	first_read(int fd, char *line, char **arr_str, t_map *map);
+int					mouse_event(int keycode, int x, int y, t_map *map);
+t_map				*ft_validation(int fd, int height);
+int					ft_height(int fd);
+int					ft_error(void);
+static int			free_ft(char *line, char **arr_str, int f1, int f2);
+static int			cycle_read(int fd, char *line, char **arr_str, t_map *map);
+static int			first_read(int fd, char *line, char **arr_str, t_map *map);
 int					delete_map(t_map **map, int i);
 t_map				*create_map(int height);
 static int			close_window(void *param);
@@ -118,13 +113,9 @@ static void			rotation_z(int *x, int *y, int *z, t_map **map);
 void				iso(int *x, int *y, int *z, t_map **map);
 static void			zoom(t_map *map, int keycode);
 static void			recolor(t_map *map, int keycode);
-static void			move(t_map *map, int keycode);
 static void			turn(t_map *map, int keycode);
 int					keyboard_event(int keycode, t_map *map);
-static	void		scrolling(int keycode, t_map *map);
-int					mouse_event(int keycode, int x, int y, t_map *map);
 void				put_pixel(t_map **map, int x, int y, int color);
-int			main(int argc, char **argv);
-
+int					main(int argc, char **argv);
 
 #endif
